@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const PORT = 8080;
+
 
 app.get('/', function(req, res) {
     res.render('index.ejs');
@@ -23,6 +25,6 @@ io.sockets.on('connection', function(socket) {
 
 });
 
-const server = http.listen(8080, function() {
-    console.log('listening on *:8080');
+const server = http.listen(PORT, function(req, res){
+console.log("LIstening on port");
 });
