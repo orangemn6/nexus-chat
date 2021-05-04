@@ -25,6 +25,6 @@ io.sockets.on('connection', function(socket) {
 
 });
 
-const server = http.listen(PORT, function(req, res){
+const server = http.listen(8080, function(req, res){
 console.log("LIstening on port");
 });
