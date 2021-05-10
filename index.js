@@ -10,7 +10,8 @@ app.get('/', function(req, res) {
 });
 
 io.sockets.on('connection', function(socket) {
-    socket.on('username', function(username) {
+    socket.on('username', function(username, colorType) {
+        socket.color = colorType;
         socket.username = username;
         io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
     });
@@ -20,7 +21,7 @@ io.sockets.on('connection', function(socket) {
     })
 
     socket.on('chat_message', function(message) {
-        io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
+        io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message, socket.color);
     });
 
 });
