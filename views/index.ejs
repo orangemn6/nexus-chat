@@ -11,10 +11,15 @@
         #messages { list-style-type: none; margin: 0; padding: 0; font-weight: bold;}
         #messages li { padding: 5px 10px;}
         .red{ background: red;}
+        .pink{background: pink}
+        .maroon{background: maroon}
+        .orangered{background: orangered}
         .orange{background: orange}
+        .peru{background: peru}
         .yellow{background:yellow}
         .green{background: green}
         .blue{background: darkblue}
+        .turquiose{background: turquiose}
         .purple{background: purple}
         .lightblue{background: lightblue}
 
@@ -32,7 +37,7 @@
     <script>
             //Choose a random color
             function getColor(){ 
-              var colorList = ["red", "orange", "yellow", "green", "blue", "purple", "lightblue"];
+              var colorList = ["red", "pink", "maroon", "orangered", "orange", "peru", "yellow", "yellowgreen",  "green", "blue", "turquiose", "purple", "lightblue"];
               var randomColor = Math.floor(Math.random()*colorList.length);
               return(colorList[randomColor])
             }
