@@ -41,7 +41,7 @@
               var randomColor = Math.floor(Math.random()*colorList.length);
               return(colorList[randomColor])
             }
-            var socket = io.connect("https://nodechat.onrender.com/");
+            var socket = io.connect("http://nodechat.onrender.com");
 
             // submit text message without reload/refresh the page
             $('form').submit(function(e){
