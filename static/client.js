@@ -11,7 +11,12 @@
  * This is to prevent any jQuery code from running before the document is finished loading (is ready).
  * From: https://www.w3schools.com/jquery/jquery_syntax.asp
  */
-
+function getColor(){
+    var colorArray = ['red', 'orange', 'green', 'blue', 'purple'];
+    var getRandomColor =  Math.floor(Math.random()*colorArray.length);
+    console.log(colorArray[getRandomColor]);
+    return(colorArray[getRandomColor])
+}
 $(function () {
     var socket = io();
 
@@ -19,13 +24,14 @@ $(function () {
     //ask the user for their name:
     (function () {
         let username = prompt("Please enter your username", "El Professor");
+        let userColor = getColor()
         if (!username) { username = "Anonymous_User"; }
 
         //save username also on the client's socket.
         socket.username = username;
-
+        socket.userColor = userColor;
         //Let the socket at the server "know" the value of the username. Each client will have their own username.
-        socket.emit('username', username);
+        socket.emit('username', username, userColor);
 
         //Let the user see their nickname:
         $("#logged_as_info").html(`<h2>Logged as: <strong>` + username + `</strong></h2>`);
@@ -72,13 +78,13 @@ $(function () {
     });
 
     //on socket event of "addChatMessage(server->clients)", do the following: (add the value to the messages list)
-    socket.on('addChatMessage(server->clients)', function (usernameAndMsg) {
-        let username_adding_msg = usernameAndMsg[0];
+    socket.on('addChatMessage(server->clients)', function (usernameAndMsg, userColor) {
+//        let username_adding_msg = usernameAndMsg[0];
         let msg = usernameAndMsg[1];
         //set different backgroud for the user that sent the message:
-        let bkg = (username_adding_msg === socket.username) ? "#ccebff" : "#ffffff";
-        let msg_with_style = `<div style="background: ` + bkg + `">` + msg + `</div>`;
-        $('#messages').append(msg_with_style);
+//        let bkg = socket.userColor;
+     //   let msg_with_style = `<div class = " `+bkg+` ">` + msg + `</div>`;
+        $('#messages').append(`<div class =  `+userColor+` >` + msg + `</div>`);
         window.scrollTo(0, document.body.scrollHeight);
     });
 
