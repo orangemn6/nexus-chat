@@ -37,8 +37,9 @@ io.on('connection', function (socket) {
   //let the clients know how many online users are there:
   io.emit('updateNumUsersOnline', ++num_users_online);
 
-  socket.on('username', function (username_from_client) {
+  socket.on('username', function (username_from_client, color_from_client) {
     socket.username = username_from_client;
+    socket.color = color_from_client;
 
     //let all users know that this user has connected:
     io.emit('userConnected', socket.username);
@@ -47,7 +48,7 @@ io.on('connection', function (socket) {
   //handle adding a message to the chat.
   socket.on('addChatMessage(client->server)', function (msg) {
     //io.emit(..., ...); - sending the message to all of the sockets.
-    io.emit('addChatMessage(server->clients)', [socket.username, prepareMessageToClients(socket, msg)]);
+    io.emit('addChatMessage(server->clients)', [socket.username, prepareMessageToClients(socket, msg)], socket.color);
   });
 
   //handle isTyping feature
