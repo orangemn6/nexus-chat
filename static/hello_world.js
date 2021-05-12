@@ -1,0 +1,1 @@
+console.log("hello world from a static dir called static!!!");

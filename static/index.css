@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#nodejs_workshop_chat_header {
+    padding: 16px 16px;
+    background: rgb(0, 102, 204);
+    color: #f1f1f1;
+    
+    /* floating header: */
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    /* centered */
+    display: flex;
+    align-items: center; /* vertical */
+    justify-content: center; /* horizonal */
+  }
+
+  body {
+    padding-top: 64px; /* heading: 16(top) + 16(bottom) + 32(<h1>) */
+    font: 13px Helvetica, Arial;
+  }
+
+  #general_information_center{
+    width: 35%; /* take 35% width from the *left* part of the page */
+    float: left;
+    
+    /* floating */
+    position: fixed;
+    top: 64px;
+
+    /* border: */
+    height: 100%;
+    min-height: 100%;
+    border-right: 1px solid #d9d9d9;
+    padding-right: 1px;
+  }
+  
+  #logged_as_info {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+
+  .general_information_center_bottom {
+    position: fixed;
+    width: 35%;
+  }
+
+  #logs_board {
+    bottom: 55px;
+  }
+
+  #num_users_online_number {
+    height: 50px;
+    background: #f1f1f1;
+    bottom: 0;
+    
+
+    border-right: 1px solid #d9d9d9;
+    border-radius: 5px;
+
+    /* centered content */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+  }
+
+  #messages_center {
+    float: right;
+    width: 65%;
+  }
+
+  #message_form {
+    padding: 3px;
+    position: fixed;
+    bottom: 0;
+    width: 65%;
+    background: #f1f1f1;
+    height: 50px;
+    border-radius: 5px;
+  }
+
+  #message_form > input {
+    border: 0;
+    padding: 10px;
+    width: 90%;
+    margin-right: .5%;
+    border-radius: 15px;
+  }
+
+  input:focus{
+    outline: none;
+  }
+
+  #message_form > button {
+    background: #99ff99;
+    border: none;
+    width: 9%;
+    padding: 10px;
+    border-radius: 15px;
+
+  }
+
+  #messages {
+    list-style-type: none;
+    margin-bottom: 40px;
+    margin: auto;
+    padding: 0;
+    width: 98%;
+  }
+
+  #messages li {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #f1f1f1;
+    border-radius: 3px;
+  }
+
+  /* #messages li:nth-child(odd) {
+    background: #eee;
+  } */
