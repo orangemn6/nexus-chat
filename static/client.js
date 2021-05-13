@@ -14,7 +14,6 @@
 function getColor(){
     var colorArray = ['red', 'orange', 'green', 'blue', 'purple'];
     var getRandomColor =  Math.floor(Math.random()*colorArray.length);
-    console.log(colorArray[getRandomColor]);
     return(colorArray[getRandomColor])
 }
 $(function () {
@@ -27,7 +26,7 @@ $(function () {
         let username = prompt("Please enter your username", "Anonymous_User");
         let userColor = getColor()
         let userNumber = Math.random()
-        console.log(username,'-', userNumber)
+        console.log(username,'-', userNumber, '-', userColor)
         if (!username) { username = "Anonymous_User"; }
 
         //save username also on the client's socket.
