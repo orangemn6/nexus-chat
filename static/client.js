@@ -23,15 +23,19 @@ $(function () {
     // -------------------------------------------------
     //ask the user for their name:
     (function () {
-        let username = prompt("Please enter your username", "El Professor");
+
+        let username = prompt("Please enter your username", "Anonymous_User");
         let userColor = getColor()
+        let userNumber = Math.random()
+        console.log(username,'-', userNumber)
         if (!username) { username = "Anonymous_User"; }
 
         //save username also on the client's socket.
         socket.username = username;
         socket.userColor = userColor;
+        socket.userNumber = userNumber;
         //Let the socket at the server "know" the value of the username. Each client will have their own username.
-        socket.emit('username', username, userColor);
+        socket.emit('username', username, userColor, userNumber);
 
         //Let the user see their nickname:
         $("#logged_as_info").html(`<h2>Logged as: <strong>` + username + `</strong></h2>`);
@@ -78,13 +82,14 @@ $(function () {
     });
 
     //on socket event of "addChatMessage(server->clients)", do the following: (add the value to the messages list)
-    socket.on('addChatMessage(server->clients)', function (usernameAndMsg, userColor) {
-//        let username_adding_msg = usernameAndMsg[0];
+    socket.on('addChatMessage(server->clients)', function (usernameAndMsg, userColor, userNumber) {
+    //    let username_adding_msg = usernameAndMsg[0];
         let msg = usernameAndMsg[1];
         //set different backgroud for the user that sent the message:
-//        let bkg = socket.userColor;
+        let bkg = (userNumber === socket.userNumber) ? "selfmsg" : userColor;
      //   let msg_with_style = `<div class = " `+bkg+` ">` + msg + `</div>`;
-        $('#messages').append(`<div class =  `+userColor+` >` + msg + `</div>`);
+        $('#messages').append(`<div class =  `+bkg+` >` + msg + `</div>`);
+
         window.scrollTo(0, document.body.scrollHeight);
     });
 
