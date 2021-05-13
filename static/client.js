@@ -12,7 +12,8 @@
  * From: https://www.w3schools.com/jquery/jquery_syntax.asp
  */
 function getColor(){
-    var colorArray = ['red', 'orange', 'green', 'blue', 'purple'];
+    var colorArray = ['rgba(255, 0, 0, 0.5)', 'rgba(255, 166, 0, 0.5)', 'rgba(255, 255, 0, 0.5)','rgba(0, 128, 0, 0.5)', 'rgba(0, 0, 255, 0.5)', 'rgba(128, 0, 128, 0.5)', 'rgba(0,128,128, 0.5)'];
+
     var getRandomColor =  Math.floor(Math.random()*colorArray.length);
     return(colorArray[getRandomColor])
 }
@@ -84,11 +85,9 @@ $(function () {
     socket.on('addChatMessage(server->clients)', function (usernameAndMsg, userColor, userNumber) {
     //    let username_adding_msg = usernameAndMsg[0];
         let msg = usernameAndMsg[1];
-        //set different backgroud for the user that sent the message:
-        let bkg = (userNumber === socket.userNumber) ? "selfmsg" : userColor;
+        //set different backgroud for the user that sent the message:        let bkg = (userNumber === socket.userNumber) ? "#ccebff" : userColor;
      //   let msg_with_style = `<div class = " `+bkg+` ">` + msg + `</div>`;
-        $('#messages').append(`<div class =  `+bkg+` >` + msg + `</div>`);
-
+        $('#messages').append(`<div style =  "background:`+bkg+`" >` + msg + `</div>`);
         window.scrollTo(0, document.body.scrollHeight);
     });
 

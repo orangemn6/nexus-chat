@@ -49,7 +49,6 @@ io.on('connection', function (socket) {
   //handle adding a message to the chat.
   socket.on('addChatMessage(client->server)', function (msg) {
     //io.emit(..., ...); - sending the message to all of the sockets.
-
     io.emit('addChatMessage(server->clients)', [socket.username, prepareMessageToClients(socket, msg)], socket.color, socket.number);
   });
 

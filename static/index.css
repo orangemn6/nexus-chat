@@ -122,47 +122,6 @@
     border: 1px solid #f1f1f1;
     border-radius: 3px;
   }
-  .selfmsg{
-    background: #ccebff 
-  }
-  .red{
-    background: rgba(255, 0, 0, 0.5); 
-  }
-  .orange{
-    background: rgba(255, 166, 0, 0.5);
-  }
-  .yellow{
-    background: rgba(255, 255, 0, 0.5);
-  }
-  .green{
-    background: rgba(0, 128, 0, 0.5);
-  }
-  .blue{
-    background: rgba(0, 0, 255, 0.5);
-  }
-  .purple{
-    background: rgba(128, 0, 128, 0.5);
-  }
-
-  .red{
-    background: rgba(255, 0, 0, 0.5); 
-  }
-  .orange{
-    background: rgba(255, 166, 0, 0.5);
-  }
-  .yellow{
-    background: rgba(255, 255, 0, 0.5);
-  }
-  .green{
-    background: rgba(0, 128, 0, 0.5);
-  }
-  .blue{
-    background: rgba(0, 0, 255, 0.5);
-  }
-  .purple{
-    background: rgba(128, 0, 128, 0.5);
-  }
-
   /* #messages li:nth-child(odd) {
     background: #eee;
   } */
