@@ -11,21 +11,34 @@
  * This is to prevent any jQuery code from running before the document is finished loading (is ready).
  * From: https://www.w3schools.com/jquery/jquery_syntax.asp
  */
-
+function getColor(){
+    var colorArray = [
+        'rgba(255, 0, 0, 0.5)', 'rgba(255, 166, 0, 0.5)', /* Red and Orange */
+        'rgba(255, 255, 0, 0.5)','rgba(0, 128, 0, 0.5)', /* Yellow and Green */
+        'rgba(0, 0, 255, 0.5)', 'rgba(128, 0, 128, 0.5)', /* Blue and Purple */
+        'rgba(0,128,128, 0.5)' /* Teal */
+    ]; 
+    var getRandomColor =  Math.floor(Math.random()*colorArray.length);
+    return(colorArray[getRandomColor])
+}
 $(function () {
     var socket = io();
 
     // -------------------------------------------------
     //ask the user for their name:
     (function () {
-        let username = prompt("Please enter your username", "El Professor");
+        let username = prompt("Please enter your username", "Anonymous_User");
+        let userColor = getColor()
+        let userNumber = Math.random()
+        console.log(username,'-', userNumber, '-', userColor)
         if (!username) { username = "Anonymous_User"; }
 
         //save username also on the client's socket.
         socket.username = username;
-
+        socket.userColor = userColor;
+        socket.userNumber = userNumber;
         //Let the socket at the server "know" the value of the username. Each client will have their own username.
-        socket.emit('username', username);
+        socket.emit('username', username, userColor, userNumber);
 
         //Let the user see their nickname:
         $("#logged_as_info").html(`<h2>Logged as: <strong>` + username + `</strong></h2>`);
@@ -72,13 +85,13 @@ $(function () {
     });
 
     //on socket event of "addChatMessage(server->clients)", do the following: (add the value to the messages list)
-    socket.on('addChatMessage(server->clients)', function (usernameAndMsg) {
-        let username_adding_msg = usernameAndMsg[0];
+    socket.on('addChatMessage(server->clients)', function (usernameAndMsg, userColor, userNumber) {
+    //    let username_adding_msg = usernameAndMsg[0];
         let msg = usernameAndMsg[1];
         //set different backgroud for the user that sent the message:
-        let bkg = (username_adding_msg === socket.username) ? "#ccebff" : "#ffffff";
-        let msg_with_style = `<div style="background: ` + bkg + `">` + msg + `</div>`;
-        $('#messages').append(msg_with_style);
+        let bkg = (userNumber === socket.userNumber) ? "#ccebff" : userColor;
+     //   let msg_with_style = `<div class = " `+bkg+` ">` + msg + `</div>`;
+        $('#messages').append(`<div style =  "background:`+bkg+`" >` + msg + `</div>`);
         window.scrollTo(0, document.body.scrollHeight);
     });
 
