@@ -1,9 +1,11 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
+  
   font-size: .95rem;
 }
 
@@ -106,7 +108,7 @@ button:disabled {
 }
 
 .chat__sidebar li {
-  background: #e6eaee;
+  background: darkgrey;
   border: 1px solid #e1e1e1;
   border-radius: 5px;
   padding: 10px;
@@ -127,11 +129,14 @@ button:disabled {
 }
 
 .chat__footer {
-  background: #e6eaee;
   display: flex;
   padding: 10px;
   /*height: 60px;*/
   flex-shrink: 0;
+}
+
+.chat__footer::selected {
+  /* blank */
 }
 
 .chat__footer form {
@@ -156,6 +161,8 @@ button:disabled {
 
 .message {
   padding: 10px;
+  border: 1px solid darkgrey;
+  border-radius: 8px;
 }
 
 .message__title {
