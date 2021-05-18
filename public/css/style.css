@@ -154,18 +154,19 @@ button:disabled {
   flex-grow: 1;
   display: flex;
   background-color: #2c2f33;
-  color: #2c2f33;
+  color: white;
 }
 
 .chat__footer form * {
   margin-right: 10px;
-  color: #2c2f33;
+  color: white;
 }
 
 .chat__footer input {
   border: none;
   padding: 10px;
   flex-grow: 1;
+  background-color: #2c2f33
 }
 
 .chat__messages {
