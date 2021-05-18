@@ -5,8 +5,17 @@
   padding: 0;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
-  
+  overflow: hidden;
   font-size: .95rem;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 ul, li {
@@ -76,6 +85,10 @@ button:disabled {
   margin-bottom: 7px;
 }
 
+#message-form {
+  background-color: #2c2f33;
+}
+
 .form-field input, .form-field select {
   border: 1px solid #e1e1e1;
   padding: 10px;
@@ -83,22 +96,18 @@ button:disabled {
 
 .chat {
   display: flex;
+  background-color: #23272a;
 }
 
 .chat__sidebar {
   overflow-y: scroll;
   width: 260px;
   height: 100vh;
-  background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
-  background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* opera 11.10+ */
-  background: -ms-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ie10+ */
-  background: linear-gradient(325deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* w3c */
+  background-color: #aa6c39
 }
 
 .chat__sidebar h3 {
-  color: #e6eaee;
+  color: white;
   margin: 10px 20px;
   text-align: left;
 }
@@ -108,10 +117,11 @@ button:disabled {
 }
 
 .chat__sidebar li {
-  background: darkgrey;
+  background: #23272a;
   border: 1px solid #e1e1e1;
   border-radius: 5px;
   padding: 10px;
+  color: white;
   margin: 10px;
 }
 
@@ -124,6 +134,7 @@ button:disabled {
 
 .chat__messages {
   flex-grow: 1;
+  color: white;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
@@ -142,10 +153,13 @@ button:disabled {
 .chat__footer form {
   flex-grow: 1;
   display: flex;
+  background-color: #2c2f33;
+  color: #2c2f33;
 }
 
 .chat__footer form * {
   margin-right: 10px;
+  color: #2c2f33;
 }
 
 .chat__footer input {
