@@ -14,6 +14,8 @@ const users = new Users();
 const publicPath = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000;
 
+var filter = require('leo-profanity');
+
 app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
@@ -39,7 +41,7 @@ io.on('connection', (socket) => {
     const user = users.getUser(socket.id);
 
     if (user && isRealString(message.text)) {
-      io.to(user.room).emit('newMessage', generateMessage(user.username, message.text));
+      io.to(user.room).emit('newMessage', generateMessage(user.username, filter.clean(message.text)));
     }
 
     callback('');
